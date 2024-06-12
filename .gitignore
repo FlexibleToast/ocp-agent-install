@@ -1,0 +1,10 @@
+openshift-install
+*.swp
+*.log
+oc
+kubectl
+*tar.gz
+.openshift_install_state.json
+*.iso
+rendezvousIP
+auth
