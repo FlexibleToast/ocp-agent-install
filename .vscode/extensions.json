@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "redhat.ansible",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens"
+    ]
+}

@@ -1,0 +1,22 @@
+---
+- name: Create OpenShift Agent ISO
+  hosts: localhost
+  connection: local
+  vars_prompt:
+    - name: env
+      prompt: "Enter your env name"
+      private: false
+  vars_files:
+    - "{{ env }}/vars.yml"
+    - "{{ env }}/vault.yml"
+  gather_facts: false
+  tasks:
+
+    - name: Set cluster variables
+      ansible.builtin.set_fact:
+        cluster_dir: "{{ playbook_dir }}/clusters/{{ env }}"
+        pull_secret: "{{ lookup('template', 'pull_secret.txt') }}"
+
+    - name: Create agent iso
+      ansible.builtin.include_role:
+        name: create-agentiso

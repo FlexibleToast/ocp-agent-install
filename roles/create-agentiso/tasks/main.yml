@@ -1,0 +1,16 @@
+---
+# tasks file for roles/create-agentiso
+- name: Ensure {{ cluster_dir }} exists
+  ansible.builtin.file:
+    path: "{{ cluster_dir }}"
+    mode: '0770'
+    state: directory
+
+- name: Create install and agent configs
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "{{ cluster_dir }}/{{ item }}"
+    mode: '0644'
+  loop:
+    - agent-config.yaml
+    - install-config.yaml

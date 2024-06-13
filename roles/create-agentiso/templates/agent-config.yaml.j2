@@ -1,0 +1,198 @@
+#jinja2: lstrip_blocks: "True"
+apiVersion: v1beta1
+metadata:
+  name: expanse
+rendezvousIP: 192.168.50.41
+hosts:
+  - hostname: tachi
+    rootDeviceHints:
+      deviceName: "/dev/disk/by-path/pci-0000:00:11.4-ata-1.0"
+    interfaces:
+      - name: ens1f0
+        macAddress: 04:9F:CA:AB:22:D4
+      - name: ens1f1
+        macAddress: 04:9F:CA:AB:22:D5
+    networkConfig:
+      interfaces:
+      - name: ens1f0
+        type: ethernet
+        state: up
+        mac-address: 04:9F:CA:AB:22:D4
+        ipv4:
+          enabled: false
+        ipv6:
+          enabled: false
+      - name: ens1f1
+        type: ethernet
+        state: up
+        mac-address: 04:9F:CA:AB:22:D5
+        ipv4:
+          enabled: false
+        ipv6:
+          enabled: false
+      - name: bond0
+        type: bond
+        state: up
+        mac-address: 04:9F:CA:AB:22:D4
+        ipv4:
+          enabled: true
+          dhcp: true
+          auto-dns: true
+          auto-gateway: true
+          auto-routes: true
+          auto-route-table-id: 0
+          dhcp-send-hostname: true
+        ipv6:
+          enabled: false
+          dhcp: false
+        link-aggregation:
+          mode: 802.3ad
+          options:
+            ad_actor_sys_prio: 65535
+            ad_actor_system: 00:00:00:00:00:00
+            ad_select: stable
+            ad_user_port_key: 0
+            all_slaves_active: dropped
+            arp_all_targets: any
+            arp_interval: 0
+            arp_validate: none
+            downdelay: 0
+            lacp_rate: slow
+            lp_interval: 1
+            miimon: 100
+            min_links: 0
+            primary_reselect: always
+            updelay: 0
+            use_carrier: true
+            xmit_hash_policy: layer2
+          port:
+          - ens1f0
+          - ens1f1
+  - hostname: rocinante
+    rootDeviceHints:
+      deviceName: "/dev/disk/by-path/pci-0000:00:11.4-ata-1.0"
+    interfaces:
+      - name: ens1f0
+        macAddress: 20:3D:B2:F9:6B:24
+      - name: ens1f1
+        macAddress: 20:3D:B2:F9:6B:25
+    networkConfig:
+      interfaces:
+      - name: ens1f0
+        type: ethernet
+        state: up
+        mac-address: 20:3D:B2:F9:6B:24
+        ipv4:
+          enabled: false
+        ipv6:
+          enabled: false
+      - name: ens1f1
+        type: ethernet
+        state: up
+        mac-address: 20:3D:B2:F9:6B:25
+        ipv4:
+          enabled: false
+        ipv6:
+          enabled: false
+      - name: bond0
+        type: bond
+        state: up
+        mac-address: 20:3D:B2:F9:6B:24
+        ipv4:
+          enabled: true
+          dhcp: true
+          auto-dns: true
+          auto-gateway: true
+          auto-routes: true
+          auto-route-table-id: 0
+          dhcp-send-hostname: true
+        ipv6:
+          enabled: false
+          dhcp: false
+        link-aggregation:
+          mode: 802.3ad
+          options:
+            ad_actor_sys_prio: 65535
+            ad_actor_system: 00:00:00:00:00:00
+            ad_select: stable
+            ad_user_port_key: 0
+            all_slaves_active: dropped
+            arp_all_targets: any
+            arp_interval: 0
+            arp_validate: none
+            downdelay: 0
+            lacp_rate: slow
+            lp_interval: 1
+            miimon: 100
+            min_links: 0
+            primary_reselect: always
+            updelay: 0
+            use_carrier: true
+            xmit_hash_policy: layer2
+          port:
+          - ens1f0
+          - ens1f1
+  - hostname: contorta
+    rootDeviceHints:
+      deviceName: "/dev/disk/by-path/pci-0000:00:11.4-ata-1.0"
+    interfaces:
+      - name: ens1f0
+        macAddress: 34:6A:C2:24:08:A3
+      - name: ens1f1
+        macAddress: 34:6A:C2:24:08:A4
+    networkConfig:
+      interfaces:
+      - name: ens1f0
+        type: ethernet
+        state: up
+        mac-address: 34:6A:C2:24:08:A3
+        ipv4:
+          enabled: false
+        ipv6:
+          enabled: false
+      - name: ens1f1
+        type: ethernet
+        state: up
+        mac-address: 34:6A:C2:24:08:A4
+        ipv4:
+          enabled: false
+        ipv6:
+          enabled: false
+      - name: bond0
+        type: bond
+        state: up
+        mac-address: 34:6A:C2:24:08:A3
+        ipv4:
+          enabled: true
+          dhcp: true
+          auto-dns: true
+          auto-gateway: true
+          auto-routes: true
+          auto-route-table-id: 0
+          dhcp-send-hostname: true
+        ipv6:
+          enabled: false
+          dchp: false
+        link-aggregation:
+          mode: 802.3ad
+          options:
+            ad_actor_sys_prio: 65535
+            ad_actor_system: 00:00:00:00:00:00
+            ad_select: stable
+            ad_user_port_key: 0
+            all_slaves_active: dropped
+            arp_all_targets: any
+            arp_interval: 0
+            arp_validate: none
+            downdelay: 0
+            lacp_rate: slow
+            lp_interval: 1
+            miimon: 100
+            min_links: 0
+            primary_reselect: always
+            updelay: 0
+            use_carrier: true
+            xmit_hash_policy: layer2
+          port:
+          - ens1f0
+          - ens1f1

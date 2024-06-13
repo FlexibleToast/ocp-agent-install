@@ -1,0 +1,8 @@
+{
+    "editor.renderWhitespace": "all",
+    "ansible.python.interpreterPath": "/bin/python3",
+    "files.associations": {
+        "*.yml": "ansible",
+        "*.j2": "ansible-jinja"
+    },
+}

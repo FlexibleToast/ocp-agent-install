@@ -1,0 +1,37 @@
+#jinja2: lstrip_blocks: "True"
+apiVersion: v1
+baseDomain: {{ cluster.name }}
+metadata:
+  name: {{ cluster.name }}
+{% if cluster.fips %}
+# To use fips you must run from a fips enabled RHEL machine
+# Fips openssl isn't using RHEL9 libraries as of 4.15, use a RHEL8 host
+fips: true
+{% endif %}
+platform:
+  baremetal:
+    apiVIPs:
+      - {{ cluster.api_vip }}
+    ingressVIPs:
+      - {{ cluster.apps_vip }}
+pullSecret: {{ pull_secret }}
+controlPlane:
+  architecture: amd64
+  name: master
+  replicas: {{ cluster.control_plane | count }}
+compute:
+- name: worker
+  {% if cluster.workers %}
+  replicas: {{ cluster.workers | count }}
+  {% else %}
+  replicas: 0
+  {% endif %}
+networking:
+  clusterNetwork:
+  - cidr: {{ cluster.cluster_network | default('10.128.0.0/14') }}
+    hostPrefix: {{ cluster.cluster_network_host_prefix | default('23') }}
+  machineNetwork:
+  - cidr: {{ cluster.machine_cidr }}
+  serviceNetwork:
+  - {{ cluster.svc_network | default('172.30.0.0/16') }}
+sshKey: {{ cluster.ssh_key }}

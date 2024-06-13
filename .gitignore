@@ -8,3 +8,5 @@ kubectl
 *.iso
 rendezvousIP
 auth
+vault.key
+clusters
